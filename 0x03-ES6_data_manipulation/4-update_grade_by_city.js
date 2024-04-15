@@ -7,21 +7,13 @@
  * @return {array} - array of students objects
  */
 
-export default function updateStudentGradeByCity(
-  listStudents,
-  city,
-  newGrades
-) {
+export default function updateStudentGradeByCity(listStudents, city, newGrades) {
   const updatedStudents = listStudents
     .filter((student) => student.location === city)
     .map((student) => {
-      const newGrade = newGrades.find(
-        (grade) => grade.studentId === student.id
-      );
-      return {
-        ...student,
-        grade: newGrade ? newGrade.grade : "N/A",
-      };
+      const newGrade = newGrades.find((grade) => grade.studentId === student.id);
+      const grade = newGrade !== undefined ? newGrade.grade : "N/A";
+      return {...student,grade: grade};
     });
 
   return updatedStudents;
