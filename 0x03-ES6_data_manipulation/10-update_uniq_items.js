@@ -4,11 +4,10 @@
  * @param {map} mapElement - map element
  * @return {map} - updated map
  */
-
-export default function updateUniqueItems(myMap) {
+export default function updateUniqueItems(mapElement) {
   try {
-    myMap.forEach((value, index) => value === 1 && myMap.set(index, 100));
+    mapElement.forEach((value, key) => value === 1 && mapElement.set(key, 100));
   } catch (error) {
-    throw new Error("Cannot process");
+    throw new Error('Cannot process');
   }
 }
