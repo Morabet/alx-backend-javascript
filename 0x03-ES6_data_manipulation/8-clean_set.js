@@ -7,11 +7,19 @@
  */
 
 export default function cleanSet(mySet, startString) {
-  if (startString === "") return "";
+  if (
+    startString === ''
+    || !mySet
+    || !startString
+    || !(mySet instanceof Set)
+    || typeof startString !== 'string'
+  ) {
+    return '';
+  }
 
   const arrayString = Array.from(mySet)
-    .filter((el) => el.includes(startString))
-    .map((el) => el.slice(startString.length));
+    .filter((el) => el.startsWith(startString))
+    .map((el) => el.substring(startString.length));
 
-  return arrayString.join("-");
+  return arrayString.join('-');
 }
