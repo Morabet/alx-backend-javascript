@@ -56,14 +56,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/students', (req, res) => {
-  res.setHeader('Content-Type', 'text/plain');
   res.write('This is the list of our students\n');
   countStudents(process.argv[2])
     .then((data) => {
-      res.send(data);
-    }
+      res.end(data);
+    })
     .catch((err) => {
-      res.send(err.message);
+      res.end(err.message);
     });
 });
 
