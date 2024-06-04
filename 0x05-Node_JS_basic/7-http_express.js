@@ -57,9 +57,10 @@ app.get('/', (req, res) => {
 
 app.get('/students', async (req, res) => {
   const patch = process.argv[2];
+  res.send(`This is the list of our students\n`)
   try {
     const studentList = await countStudents(patch);
-    res.send(`This is the list of our students\n${studentList}`);
+    res.send(studentList);
   } catch (error) {
     res.status(500);
     res.send('Cannot load the database');
@@ -71,3 +72,4 @@ app.listen(PORT, () => {
 });
 
 module.exports = app;
+
