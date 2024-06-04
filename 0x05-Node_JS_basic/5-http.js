@@ -50,25 +50,19 @@ const countStudents = async (path) => {
 };
 
 const app = http.createServer(async (req, res) => {
+  res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-
-  if (req.url === '/') {
-    res.statusCode = 200;
-    res.end('Hello Holberton School!');
-  } else if (req.url === '/students') {
-    res.end('This is the list of our students\n');
-    try {
-      const databasePath = process.argv[2];
-      const studentList = await countStudents(databasePath);
-      res.statusCode = 200;
-      res.end(studentList);
-    } catch (error) {
-      res.statusCode = 500;
-      res.end('Cannot load the database');
-    }
-  } else {
-    res.statusCode = 404;
-    res.end('Not Found');
+  if (req.url === '/') res.end('Hello Holberton School!');
+  if (req.url === '/students') {
+    res.write('This is the list of our students\n');
+    countStudents(process.argv[2])
+      .then((data) => {
+        res.write(data);
+        res.end();
+      })
+      .catch((err) => {
+        res.end(err.message);
+      });
   }
 });
 
