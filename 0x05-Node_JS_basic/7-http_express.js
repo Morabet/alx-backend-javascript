@@ -55,16 +55,16 @@ app.get('/', (req, res) => {
   res.send('Hello Holberton School!');
 });
 
-app.get('/students', async (req, res) => {
-  const patch = process.argv[2];
-  res.send(`This is the list of our students\n`)
-  try {
-    const studentList = await countStudents(patch);
-    res.send(studentList);
-  } catch (error) {
-    res.status(500);
-    res.send('Cannot load the database');
-  }
+app.get('/students', (req, res) => {
+  res.setHeader('Content-Type', 'text/plain');
+  res.write('This is the list of our students\n');
+  countStudents(process.argv[2])
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch((err) => {
+      res.status(500).send(err.message);
+    });
 });
 
 app.listen(PORT, () => {
@@ -72,4 +72,3 @@ app.listen(PORT, () => {
 });
 
 module.exports = app;
-
