@@ -34,4 +34,3 @@ const readDatabase = async (path) => {
 };
 
 module.exports = readDatabase;
-

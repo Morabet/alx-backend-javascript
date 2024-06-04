@@ -9,4 +9,3 @@ router.get('/students', (req, res) => StudentsController.getAllStudents(req, res
 router.get('/students/:major', (req, res) => StudentsController.getAllStudentsByMajor(req, res));
 
 module.exports = router;
-

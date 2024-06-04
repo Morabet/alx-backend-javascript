@@ -49,4 +49,3 @@ const countStudents = async (path) => {
 };
 
 module.exports = countStudents;
-
