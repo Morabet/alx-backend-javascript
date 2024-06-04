@@ -60,10 +60,10 @@ app.get('/students', (req, res) => {
   res.write('This is the list of our students\n');
   countStudents(process.argv[2])
     .then((data) => {
-      res.status(200).send(data);
-    })
+      res.send(data);
+    }
     .catch((err) => {
-      res.status(500).send(err.message);
+      res.send(err.message);
     });
 });
 
