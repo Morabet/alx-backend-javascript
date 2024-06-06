@@ -1,6 +1,6 @@
-import { expect } from 'chai';
+const { expect } = require('chai');
 
-describe('testing numbers', () => {
+describe('Testing numbers', () => {
   it('1 is equal to 1', () => {
     expect(1 === 1).to.be.true;
   });
@@ -33,4 +33,3 @@ describe('testing numbers', () => {
     expect(7 === 7).to.be.true;
   });
 });
-
