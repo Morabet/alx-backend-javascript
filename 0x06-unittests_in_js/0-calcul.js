@@ -3,5 +3,4 @@ const calculateNumber = (a, b) => {
   const roundedB = Math.round(b);
   return roundedA + roundedB;
 };
-export default calculateNumber;
-
+module.exports = calculateNumber;
